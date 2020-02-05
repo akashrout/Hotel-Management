@@ -6,24 +6,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class FoodCategory.
  */
 @Entity
-@Table(name="Food_Category")
+@Table(name = "Food_Category")
 public class FoodCategoryEntity {
 
 	/** The category id. */
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "category_id")
 	private Long categoryId;
-	
+
 	/** The category name. */
 	private String categoryName;
-	
+
 	/** The category description. */
 	private String categoryDescription;
 
@@ -33,7 +34,7 @@ public class FoodCategoryEntity {
 	public FoodCategoryEntity() {
 	}
 
-	public FoodCategoryEntity( String categoryName, String categoryDescription) {
+	public FoodCategoryEntity(String categoryName, String categoryDescription) {
 		this.categoryName = categoryName;
 		this.categoryDescription = categoryDescription;
 	}
@@ -52,6 +53,7 @@ public class FoodCategoryEntity {
 		this.categoryId = categoryId;
 	}
 
+	@NotNull(message="Email Address is compulsory")
 	public String getCategoryName() {
 		return categoryName;
 	}
@@ -68,6 +70,4 @@ public class FoodCategoryEntity {
 		this.categoryDescription = categoryDescription;
 	}
 
-	
-	
 }

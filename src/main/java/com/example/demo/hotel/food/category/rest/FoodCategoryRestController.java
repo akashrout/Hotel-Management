@@ -2,6 +2,9 @@ package com.example.demo.hotel.food.category.rest;
 
 import java.util.List;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,9 +33,9 @@ public class FoodCategoryRestController {
 	/** The category service. */
 	@Autowired
 	private FoodCategoryService categoryService;
-	
+
 	@GetMapping("allcategory")
-	public ResponseEntity<List<FoodCategoryEntity>> listAllProducts(){
+	public ResponseEntity<List<FoodCategoryEntity>> listAllProducts() {
 		List<FoodCategoryEntity> foodCategories = categoryService.getAllCategory();
 		if (foodCategories.isEmpty()) {
 			return new ResponseEntity<List<FoodCategoryEntity>>(foodCategories, HttpStatus.NOT_FOUND);
@@ -47,13 +50,13 @@ public class FoodCategoryRestController {
 	 * @return the status
 	 */
 	@PostMapping("addcategory")
+
 	public ResponseEntity<FoodCategoryBean> addCategory(@RequestBody FoodCategoryBean foodCategory) {
-	
-		boolean isvalue=	CategoryValidator.validateCategory(foodCategory);
-	FoodCategoryBean FoodCategoryBean =categoryService.createCategory(foodCategory);
-	return new ResponseEntity<>(foodCategory,HttpStatus.CREATED);
-	
-		
+
+		boolean isvalue = CategoryValidator.validateCategory(foodCategory);
+		FoodCategoryBean foodCategoryBean = categoryService.createCategory(foodCategory);
+		return new ResponseEntity<>(foodCategoryBean, HttpStatus.CREATED);
+
 //
 //		if ((foodCategory.getCategoryId()d() == null) || (foodCategory.getCategory_name() == null)
 //				|| (foodCategory.getCategory_description() == null)) {
