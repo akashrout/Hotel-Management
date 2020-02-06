@@ -2,9 +2,6 @@ package com.example.demo.hotel.food.category.rest;
 
 import java.util.List;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +30,8 @@ public class FoodCategoryRestController {
 	/** The category service. */
 	@Autowired
 	private FoodCategoryService categoryService;
+	@Autowired
+	private CategoryValidator categoryValidator;
 
 	@GetMapping("allcategory")
 	public ResponseEntity<List<FoodCategoryEntity>> listAllProducts() {
@@ -52,14 +51,29 @@ public class FoodCategoryRestController {
 	@PostMapping("addcategory")
 
 	public ResponseEntity<FoodCategoryBean> addCategory(@RequestBody FoodCategoryBean foodCategory) {
+		System.out.println("Inputed Data Are: " + foodCategory);
 
-		boolean isvalue = CategoryValidator.validateCategory(foodCategory);
-		FoodCategoryBean foodCategoryBean = categoryService.createCategory(foodCategory);
-		return new ResponseEntity<>(foodCategoryBean, HttpStatus.CREATED);
+		boolean isvalue = categoryValidator.validateCategoryForEmptyData(foodCategory);
+		if (isvalue) {
 
-//
+			if (categoryValidator.isCategoryNamePresent(foodCategory)) {
+				return new ResponseEntity(new Status("Category Name already Present, Please try another one... "),
+						HttpStatus.CONFLICT);
+			} else {
+				FoodCategoryBean foodCategoryBean = categoryService.createCategory(foodCategory);
+				System.out.println("Inputed Data Are: " + foodCategoryBean);
+				return new ResponseEntity<>(foodCategoryBean, HttpStatus.CREATED);
+
+			}
+
+		} else {
+			return new ResponseEntity(new Status("Unable to create. Some fields are missing "), HttpStatus.CONFLICT);
+
+		}
+
+// 
 //		if ((foodCategory.getCategoryId()d() == null) || (foodCategory.getCategory_name() == null)
-//				|| (foodCategory.getCategory_description() == null)) {
+//				|| (foodCategory.getCategory_description() == null)) { 
 //
 ////			Status status = new Status("Please Provide all details");
 //

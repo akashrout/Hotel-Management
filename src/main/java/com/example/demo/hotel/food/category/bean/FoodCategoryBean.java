@@ -66,6 +66,12 @@ public class FoodCategoryBean {
 	public void setCategoryDescription(String categoryDescription) {
 		this.categoryDescription = categoryDescription;
 	}
+
+	@Override
+	public String toString() {
+		return "FoodCategoryBean [categoryId=" + categoryId + ", categoryName=" + categoryName
+				+ ", categoryDescription=" + categoryDescription + "]";
+	}
 	
 	
 

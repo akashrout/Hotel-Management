@@ -60,4 +60,12 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 		return categoryrepository.findById(categoryid).isPresent();
 	}
 
+
+
+	@Override
+	public boolean isCategoryNamePresent(String categoryName) {
+		// TODO Auto-generated method stub
+		return categoryrepository.existsByCategoryName(categoryName);
+	}
+
 }

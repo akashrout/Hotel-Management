@@ -5,5 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.hotel.food.category.enitity.FoodCategoryEntity;
 
 public interface FoodCategoryRepository extends JpaRepository<FoodCategoryEntity, Long> {
+	
+	public boolean existsByCategoryName(String categoryName);
 
 }

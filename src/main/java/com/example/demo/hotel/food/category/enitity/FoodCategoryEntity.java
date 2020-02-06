@@ -53,7 +53,7 @@ public class FoodCategoryEntity {
 		this.categoryId = categoryId;
 	}
 
-	@NotNull(message="Email Address is compulsory")
+	//@NotNull(message="Email Address is compulsory")
 	public String getCategoryName() {
 		return categoryName;
 	}

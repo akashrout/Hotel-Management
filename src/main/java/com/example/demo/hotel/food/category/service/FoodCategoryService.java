@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.example.demo.hotel.food.category.service;
 
 import java.util.List;
@@ -5,6 +8,10 @@ import java.util.List;
 import com.example.demo.hotel.food.category.bean.FoodCategoryBean;
 import com.example.demo.hotel.food.category.enitity.FoodCategoryEntity;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface FoodCategoryService.
+ */
 public interface FoodCategoryService {
 	
 	/**
@@ -18,7 +25,7 @@ public interface FoodCategoryService {
 	/**
 	 * Checks if is categorypresent.
 	 *
-	 * @param long1 the categoryid
+	 * @param categoryId the category id
 	 * @return true, if is categorypresent
 	 */
 	public boolean iscategorypresent(Long categoryId);
@@ -28,6 +35,7 @@ public interface FoodCategoryService {
 	 *
 	 * @param categoryId the category id
 	 */
+	
 	public void deleteCategory(Long categoryId);
 	
 	/**
@@ -36,5 +44,13 @@ public interface FoodCategoryService {
 	 * @return the all category
 	 */
 	public List<FoodCategoryEntity> getAllCategory();
+	
+	/**
+	 * Checks if is category name present.
+	 *
+	 * @param categoryName the category name
+	 * @return true, if is category name present
+	 */
+	public boolean isCategoryNamePresent(String categoryName);
 
 }
