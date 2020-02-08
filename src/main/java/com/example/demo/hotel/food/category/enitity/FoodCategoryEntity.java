@@ -1,12 +1,13 @@
 package com.example.demo.hotel.food.category.enitity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -14,7 +15,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "Food_Category")
-public class FoodCategoryEntity {
+public class FoodCategoryEntity implements Serializable{
 
 	/** The category id. */
 	@Id
@@ -23,6 +24,7 @@ public class FoodCategoryEntity {
 	private Long categoryId;
 
 	/** The category name. */
+	@Column(unique = true)
 	private String categoryName;
 
 	/** The category description. */
@@ -69,5 +71,38 @@ public class FoodCategoryEntity {
 	public void setCategoryDescription(String categoryDescription) {
 		this.categoryDescription = categoryDescription;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((categoryId == null) ? 0 : categoryId.hashCode());
+		result = prime * result + ((categoryName == null) ? 0 : categoryName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FoodCategoryEntity other = (FoodCategoryEntity) obj;
+		if (categoryId == null) {
+			if (other.categoryId != null)
+				return false;
+		} else if (!categoryId.equals(other.categoryId))
+			return false;
+		if (categoryName == null) {
+			if (other.categoryName != null)
+				return false;
+		} else if (!categoryName.equals(other.categoryName))
+			return false;
+		return true;
+	}
+	
+	
 
 }

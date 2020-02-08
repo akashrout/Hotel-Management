@@ -21,6 +21,7 @@ public interface FoodCategoryService {
 	 * @return the food category bean
 	 */
 	public FoodCategoryBean createCategory(FoodCategoryBean foodCategory);
+	public FoodCategoryBean updateCategory(FoodCategoryBean foodCategory);
 	
 	/**
 	 * Checks if is categorypresent.

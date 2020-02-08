@@ -2,9 +2,12 @@ package com.example.demo.hotel.food.category.rest;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,16 +52,15 @@ public class FoodCategoryRestController {
 	 * @return the status
 	 */
 	@PostMapping("addcategory")
-
+	// @Validated
 	public ResponseEntity<FoodCategoryBean> addCategory(@RequestBody FoodCategoryBean foodCategory) {
 		System.out.println("Inputed Data Are: " + foodCategory);
 
-		boolean isvalue = categoryValidator.validateCategoryForEmptyData(foodCategory);
-		if (isvalue) {
+		if (categoryValidator.validateCategoryForEmptyData(foodCategory)) {
 
-			if (categoryValidator.isCategoryNamePresent(foodCategory)) {
+			if (categoryValidator.isCategoryNamePresent(foodCategory.getCategoryName())) {
 				return new ResponseEntity(new Status("Category Name already Present, Please try another one... "),
-						HttpStatus.CONFLICT);
+						HttpStatus.NOT_ACCEPTABLE);
 			} else {
 				FoodCategoryBean foodCategoryBean = categoryService.createCategory(foodCategory);
 				System.out.println("Inputed Data Are: " + foodCategoryBean);
@@ -100,17 +102,23 @@ public class FoodCategoryRestController {
 	 * @return the status
 	 */
 	@PutMapping("updatecategory")
-	public Status updateCategory(@RequestBody FoodCategoryBean foodCategory) {
+	public ResponseEntity<FoodCategoryBean> updateCategory(@RequestBody FoodCategoryBean foodCategory) {
 
-		if (categoryService.iscategorypresent(foodCategory.getCategoryId())) {
-			categoryService.createCategory(foodCategory);
-			Status status = new Status("Updated Succesfully");
+		if (categoryValidator.isIdPresent(foodCategory.getCategoryId())) {
+			if (categoryValidator.isCategoryNamePresent(foodCategory.getCategoryName())) {
+				return new ResponseEntity(new Status("Category Name already Present, Please try another one for update... "), HttpStatus.CONFLICT);
+			}
+			else {
+				
+				categoryService.updateCategory(foodCategory);
+				return new ResponseEntity(new Status("Updated Succesfully... "), HttpStatus.ACCEPTED);
+				
+			}
 
-			return status;
 		} else {
-			Status status = new Status("Category Not Availabale");
 
-			return status;
+			return new ResponseEntity(new Status("Unable to update, Category Id or Category Name not available "),
+					HttpStatus.CONFLICT);
 
 		}
 	}

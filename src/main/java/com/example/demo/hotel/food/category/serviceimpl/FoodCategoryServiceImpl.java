@@ -27,7 +27,18 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 		return foodCategoryBean;
 	}
 
-	
+	public FoodCategoryBean updateCategory(FoodCategoryBean foodCategory) {
+		
+		FoodCategoryEntity foodCategoryEntity =categoryrepository.getOne(foodCategory.getCategoryId());
+		if(null!=foodCategoryEntity)
+		{
+		 foodCategoryEntity = CategoryRequestTransformer.getRequestTransformerFoodCategoryUpdate(foodCategory);
+		}
+		categoryrepository.save(foodCategoryEntity);
+		FoodCategoryBean foodCategoryBean = CategoryRespnseTransformer.getFoodCategoryBean(foodCategoryEntity);
+		return foodCategoryBean;
+	}
+
 
 	@Override
 	public void deleteCategory(Long Category_id) {

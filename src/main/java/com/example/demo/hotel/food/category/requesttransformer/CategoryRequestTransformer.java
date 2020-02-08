@@ -18,6 +18,11 @@ public class CategoryRequestTransformer {
 		
 	}
 
+	public static FoodCategoryEntity getRequestTransformerFoodCategoryUpdate(FoodCategoryBean foodCategory) {
+		FoodCategoryEntity foodCategoryEntity= new FoodCategoryEntity(foodCategory.getCategoryId(),foodCategory.getCategoryName(),foodCategory.getCategoryDescription());
+		return foodCategoryEntity;
+	}
+
 //	public static List<FoodCategoryEntity> getAllCategoryEntity() {
 //		// TODO Auto-generated method stub
 //		return categoryRepository.findAll();
