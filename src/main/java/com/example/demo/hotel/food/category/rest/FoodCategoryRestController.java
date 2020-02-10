@@ -106,7 +106,7 @@ public class FoodCategoryRestController {
 
 		if (categoryValidator.isIdPresent(foodCategory.getCategoryId())) {
 			if (categoryValidator.isCategoryNamePresent(foodCategory.getCategoryName())) {
-				return new ResponseEntity(new Status("Category Name already Present, Please try another one for update... "), HttpStatus.CONFLICT);
+				return new ResponseEntity(new Status("Category Name already Present, Please try another one for update... "), HttpStatus.NOT_ACCEPTABLE);
 			}
 			else {
 				
@@ -130,16 +130,15 @@ public class FoodCategoryRestController {
 	 * @return the status
 	 */
 	@DeleteMapping("deletecategory")
-	public Status deleteCategory(@RequestBody FoodCategoryBean foodCategory) {
+	public ResponseEntity<FoodCategoryBean> deleteCategory(@RequestBody FoodCategoryBean foodCategory) {
 		if (categoryService.iscategorypresent(foodCategory.getCategoryId())) {
 			categoryService.deleteCategory(foodCategory.getCategoryId());
-			Status status = new Status("Deleted Succesfully");
 
-			return status;
+			return new ResponseEntity(new Status("Deleted Succesfully... "), HttpStatus.OK);
 		} else {
 			Status status = new Status("Category Not Availabale");
 
-			return status;
+			return new ResponseEntity(new Status("This Category Id Is not available, Unable to delete... "), HttpStatus.CONFLICT);
 
 		}
 	}

@@ -9,5 +9,10 @@ class HotelManagementApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+	@Test
+	public void testCreateCategory() {
+		
+		
+	}
 
 }
