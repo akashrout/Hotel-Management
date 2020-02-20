@@ -69,7 +69,7 @@ public class FoodCategoryRestController {
 			}
 
 		} else {
-			return new ResponseEntity(new Status("Unable to create. Some fields are missing "), HttpStatus.CONFLICT);
+			    return new ResponseEntity(new Status("Unable to create. Some fields are missing "), HttpStatus.CONFLICT);
 
 		}
 

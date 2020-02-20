@@ -14,11 +14,23 @@ import com.example.demo.hotel.food.category.requesttransformer.CategoryRequestTr
 import com.example.demo.hotel.food.category.responsetransformer.CategoryRespnseTransformer;
 import com.example.demo.hotel.food.category.service.FoodCategoryService;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FoodCategoryServiceImpl.
+ */
 @Service
 public class FoodCategoryServiceImpl implements FoodCategoryService {
+	
+	/** The categoryrepository. */
 	@Autowired
 	private FoodCategoryRepository categoryrepository;
 
+	/**
+	 * Creates the category.
+	 *
+	 * @param foodCategory the food category
+	 * @return the food category bean
+	 */
 	@Override
 	public FoodCategoryBean createCategory(FoodCategoryBean foodCategory) {
 		FoodCategoryEntity foodCategoryEntity = CategoryRequestTransformer.getFoodCategoryEntity(foodCategory);
@@ -27,6 +39,12 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 		return foodCategoryBean;
 	}
 
+	/**
+	 * Update category.
+	 *
+	 * @param foodCategory the food category
+	 * @return the food category bean
+	 */
 	public FoodCategoryBean updateCategory(FoodCategoryBean foodCategory) {
 		
 		FoodCategoryEntity foodCategoryEntity =categoryrepository.getOne(foodCategory.getCategoryId());
@@ -40,6 +58,11 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 	}
 
 
+	/**
+	 * Delete category.
+	 *
+	 * @param Category_id the category id
+	 */
 	@Override
 	public void deleteCategory(Long Category_id) {
 		// TODO Auto-generated method stub
@@ -47,6 +70,11 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 		
 	}
 
+	/**
+	 * Gets the all category.
+	 *
+	 * @return the all category
+	 */
 	@Override
 	public List<FoodCategoryEntity> getAllCategory() {
 		// TODO Auto-generated method stub
@@ -66,6 +94,12 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 
 
 
+	/**
+	 * Checks if is categorypresent.
+	 *
+	 * @param categoryid the categoryid
+	 * @return true, if is categorypresent
+	 */
 	public boolean iscategorypresent(Long categoryid) {
 		// TODO Auto-generated method stub
 		return categoryrepository.findById(categoryid).isPresent();
@@ -73,6 +107,12 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 
 
 
+	/**
+	 * Checks if is category name present.
+	 *
+	 * @param categoryName the category name
+	 * @return true, if is category name present
+	 */
 	@Override
 	public boolean isCategoryNamePresent(String categoryName) {
 		// TODO Auto-generated method stub

@@ -38,7 +38,8 @@ public class FoodItemEntity implements Serializable {
 	 * Instantiates a new food item entity.
 	 */
 	public FoodItemEntity() {
-		super();
+		//remove all super in every entity and bean also
+		//ok sir
 	}
 	
 	
@@ -51,7 +52,6 @@ public class FoodItemEntity implements Serializable {
 	 * @param itemIngredients the item ingredients
 	 */
 	public FoodItemEntity(String itemName, long itemPrice, String itemIngredients) {
-		super();
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
 		this.itemIngredients = itemIngredients;
