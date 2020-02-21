@@ -15,12 +15,12 @@ import javax.persistence.Table;
 public class FoodCategoryBean {
 
 	/** The category id. */
-	
+
 	private Long categoryId;
-	
+
 	/** The category name. */
 	private String categoryName;
-	
+
 	/** The category description. */
 	private String categoryDescription;
 
@@ -28,16 +28,16 @@ public class FoodCategoryBean {
 	 * Instantiates a new food category.
 	 */
 	public FoodCategoryBean() {
-		super();
+
 	}
 
-	public FoodCategoryBean( String categoryName, String categoryDescription) {
+	public FoodCategoryBean(String categoryName, String categoryDescription) {
 		this.categoryName = categoryName;
 		this.categoryDescription = categoryDescription;
 	}
 
 	public FoodCategoryBean(Long categoryId, String categoryName, String categoryDescription) {
-		super();
+
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
 		this.categoryDescription = categoryDescription;
@@ -72,9 +72,5 @@ public class FoodCategoryBean {
 		return "FoodCategoryBean [categoryId=" + categoryId + ", categoryName=" + categoryName
 				+ ", categoryDescription=" + categoryDescription + "]";
 	}
-	
-	
 
-	
-	
 }
