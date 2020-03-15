@@ -5,7 +5,7 @@ import com.example.demo.hotel.food.item.entity.FoodItemEntity;
 
 public class ItemResponseTransformer {
 
-	public static FoodItemBean getFoodItemBeam(FoodItemEntity foodItemEntity) {
+	public static FoodItemBean getFoodItemBean(FoodItemEntity foodItemEntity) {
 		// TODO Auto-generated method stub
 		return new FoodItemBean(foodItemEntity.getItemId(), foodItemEntity.getItemName(), foodItemEntity.getItemPrice(), foodItemEntity.getItemIngredients());
 	}

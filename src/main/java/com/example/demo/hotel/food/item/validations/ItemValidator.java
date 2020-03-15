@@ -22,7 +22,14 @@ public class ItemValidator {
 
 		}
 	}
+
 	public boolean isItemPresent(String itemName) {
 		return foodItemService.isItemPresent(itemName);
 	}
+
+	public boolean isItemIdPresent(Long itemId) {
+		// TODO Auto-generated method stub
+		return foodItemService.isItemIdPresent(itemId);
+	}
+
 }
