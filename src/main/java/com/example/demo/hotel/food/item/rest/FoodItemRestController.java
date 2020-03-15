@@ -26,11 +26,11 @@ import com.example.demo.hotel.food.item.validations.ItemValidator;
 @RestController
 @RequestMapping("items")
 public class FoodItemRestController {
-	
+
 	/** The food item service. */
 	@Autowired
 	private FoodItemService foodItemService;
-	
+
 	/** The item validator. */
 	@Autowired
 	private ItemValidator itemValidator;
@@ -87,16 +87,21 @@ public class FoodItemRestController {
 	 */
 	@PutMapping("/update")
 	public ResponseEntity<FoodItemBean> updateItem(@RequestBody FoodItemBean foodItemBean) {
+		System.out.println("Update Items: " + foodItemBean);
 
 		if (itemValidator.iSAllItemFieldPresent(foodItemBean)) {
 
-			 
-			FoodItemBean itemBean =foodItemService.updateItem(foodItemBean);
-			return new ResponseEntity<FoodItemBean>(itemBean, HttpStatus.CREATED);
-		}
- 
+			if (itemValidator.isItemIdPresent(foodItemBean.getItemId())) {
+				FoodItemBean itemBean = foodItemService.updateItem(foodItemBean);
+				return new ResponseEntity<FoodItemBean>(itemBean, HttpStatus.ACCEPTED);
+			} else {
+				return new ResponseEntity(new Status("Unable to update,Item is not present..."), HttpStatus.NOT_ACCEPTABLE);
 
-	 else {
+			}
+
+		}
+
+		else {
 			return new ResponseEntity(new Status("Unable to update, Some Item Details are missing..."),
 					HttpStatus.CONFLICT);
 		}
