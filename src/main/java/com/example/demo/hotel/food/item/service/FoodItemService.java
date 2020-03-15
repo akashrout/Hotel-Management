@@ -13,6 +13,8 @@ public interface FoodItemService {
 	public boolean isItemPresent(String itemName);
 	public void deleteItem(String itemName);
 	public FoodItemBean updateItem(FoodItemBean foodItemBean);
+
+	public boolean isItemIdPresent(Long itemId);
 	
 
 }

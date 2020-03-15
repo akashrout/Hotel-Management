@@ -15,7 +15,6 @@ import com.example.demo.hotel.food.item.requesttransformer.ItemrequestTransforme
 import com.example.demo.hotel.food.item.responsetransformer.ItemResponseTransformer;
 import com.example.demo.hotel.food.item.service.FoodItemService;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FoodItemServiceImpl.
  */
@@ -48,7 +47,7 @@ public class FoodItemServiceImpl implements FoodItemService {
 	public FoodItemBean createItem(FoodItemBean foodItemBean) {
 		FoodItemEntity foodItemEntity = ItemrequestTransformer.getFoodItemEntity(foodItemBean);
 		foodItemRepository.save(foodItemEntity);
-		FoodItemBean itemBean = ItemResponseTransformer.getFoodItemBeam(foodItemEntity);
+		FoodItemBean itemBean = ItemResponseTransformer.getFoodItemBean(foodItemEntity);
 		return itemBean;
 	}
 
@@ -83,20 +82,31 @@ public class FoodItemServiceImpl implements FoodItemService {
 	@Override
 	public FoodItemBean updateItem(FoodItemBean foodItemBean) {
 		// TODO Auto-generated method stub
-		//first we get data using id
-		//2nd we are doing the set data of bean into entity
-		//3r saveing the entity to db
+		// first we get data using id
+		// 2nd we are doing the set data of bean into entity
+		// 3r saveing the entity to db
 		FoodItemEntity foodItemEntity = foodItemRepository.findById(foodItemBean.getItemId()).get();
-		if(foodItemEntity!=null)
-		{
+		if (foodItemEntity != null) {
 			foodItemEntity.setItemName(foodItemBean.getItemName());
 			foodItemEntity.setItemPrice(foodItemBean.getItemPrice());
 			foodItemEntity.setItemIngredients(foodItemBean.getItemIngredients());
 		}
 		foodItemRepository.save(foodItemEntity);
-		FoodItemBean itemBean = ItemResponseTransformer.getFoodItemBeam(foodItemEntity);
-		//it will have it also while returing the updated data
+		FoodItemBean itemBean = ItemResponseTransformer.getFoodItemBean(foodItemEntity);
+		// it will have it also while returing the updated data
 		return itemBean;
+	}
+
+	/**
+	 * Checks if is item id present.
+	 *
+	 * @param itemId the item id
+	 * @return true, if is item id present
+	 */
+	@Override
+	public boolean isItemIdPresent(Long itemId) {
+		// TODO Auto-generated method stub
+		return foodItemRepository.findById(itemId).isPresent();
 	}
 
 }
