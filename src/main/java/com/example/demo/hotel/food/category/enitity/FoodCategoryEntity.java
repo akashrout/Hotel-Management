@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Food_Category")
-public class FoodCategoryEntity implements Serializable{
+public class FoodCategoryEntity implements Serializable {
 
 	/** The category id. */
 	@Id
@@ -36,42 +36,90 @@ public class FoodCategoryEntity implements Serializable{
 	public FoodCategoryEntity() {
 	}
 
+	/**
+	 * Instantiates a new food category entity.
+	 *
+	 * @param categoryName        the category name
+	 * @param categoryDescription the category description
+	 */
 	public FoodCategoryEntity(String categoryName, String categoryDescription) {
 		this.categoryName = categoryName;
 		this.categoryDescription = categoryDescription;
 	}
 
+	/**
+	 * Instantiates a new food category entity.
+	 *
+	 * @param categoryId          the category id
+	 * @param categoryName        the category name
+	 * @param categoryDescription the category description
+	 */
 	public FoodCategoryEntity(Long categoryId, String categoryName, String categoryDescription) {
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
 		this.categoryDescription = categoryDescription;
 	}
 
+	/**
+	 * Gets the category id.
+	 *
+	 * @return the category id
+	 */
 	public Long getCategoryId() {
 		return categoryId;
 	}
 
+	/**
+	 * Sets the category id.
+	 *
+	 * @param categoryId the new category id
+	 */
 	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
 
-	//@NotNull(message="Email Address is compulsory")
+	/**
+	 * Gets the category name.
+	 *
+	 * @return the category name
+	 */
+	// @NotNull(message="Email Address is compulsory")
 	public String getCategoryName() {
 		return categoryName;
 	}
 
+	/**
+	 * Sets the category name.
+	 *
+	 * @param categoryName the new category name
+	 */
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
 
+	/**
+	 * Gets the category description.
+	 *
+	 * @return the category description
+	 */
 	public String getCategoryDescription() {
 		return categoryDescription;
 	}
 
+	/**
+	 * Sets the category description.
+	 *
+	 * @param categoryDescription the new category description
+	 */
 	public void setCategoryDescription(String categoryDescription) {
 		this.categoryDescription = categoryDescription;
 	}
 
+	/**
+	 * Hash code.
+	 *
+	 * @return the int
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -81,6 +129,12 @@ public class FoodCategoryEntity implements Serializable{
 		return result;
 	}
 
+	/**
+	 * Equals.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -102,8 +156,5 @@ public class FoodCategoryEntity implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }

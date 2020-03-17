@@ -17,15 +17,15 @@ import com.example.demo.hotel.food.category.responsetransformer.CategoryRespnseT
 import com.example.demo.hotel.food.category.service.FoodCategoryService;
 import com.example.demo.hotel.food.category.validations.CategoryValidator;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FoodCategoryServiceImpl.
  */
 @Service
 public class FoodCategoryServiceImpl implements FoodCategoryService {
-	
+
+	/** The Constant log. */
 	private static final Logger log = LoggerFactory.getLogger(FoodCategoryServiceImpl.class);
-	
+
 	/** The categoryrepository. */
 	@Autowired
 	private FoodCategoryRepository categoryrepository;
@@ -41,6 +41,8 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 		log.info("Entering Create Category...");
 		log.debug("Entering Create category...");
 		FoodCategoryEntity foodCategoryEntity = CategoryRequestTransformer.getFoodCategoryEntity(foodCategory);
+		log.info("Saving Category to DB...");
+		log.debug("Saving category to DB...");
 		categoryrepository.save(foodCategoryEntity);
 		FoodCategoryBean foodCategoryBean = CategoryRespnseTransformer.getFoodCategoryBean(foodCategoryEntity);
 		return foodCategoryBean;
@@ -53,17 +55,21 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 	 * @return the food category bean
 	 */
 	public FoodCategoryBean updateCategory(FoodCategoryBean foodCategory) {
-		
-		FoodCategoryEntity foodCategoryEntity =categoryrepository.getOne(foodCategory.getCategoryId());
-		if(null!=foodCategoryEntity)
-		{
-		 foodCategoryEntity = CategoryRequestTransformer.getRequestTransformerFoodCategoryUpdate(foodCategory);
+		log.info("Entering Update Category...");
+		log.debug("Entering Update category...");
+
+		FoodCategoryEntity foodCategoryEntity = categoryrepository.getOne(foodCategory.getCategoryId());
+		if (null != foodCategoryEntity) {
+			foodCategoryEntity = CategoryRequestTransformer.getRequestTransformerFoodCategoryUpdate(foodCategory);
 		}
+		log.info("Saving the Update Category...");
+		log.debug("Saving the Update category...");
 		categoryrepository.save(foodCategoryEntity);
 		FoodCategoryBean foodCategoryBean = CategoryRespnseTransformer.getFoodCategoryBean(foodCategoryEntity);
+		log.info("Returning  Updated Category...");
+		log.debug("Returning Updated category...");
 		return foodCategoryBean;
 	}
-
 
 	/**
 	 * Delete category.
@@ -72,9 +78,10 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 	 */
 	@Override
 	public void deleteCategory(Long Category_id) {
-		// TODO Auto-generated method stub
+		log.info("Deleting Category...");
+		log.debug("Deleting category...");
 		categoryrepository.deleteById(Category_id);
-		
+
 	}
 
 	/**
@@ -84,18 +91,16 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 	 */
 	@Override
 	public List<FoodCategoryBean> getAllCategory() {
-		
+		log.info("Inside Getting all Category...");
+		log.debug("Inside getting all category...");
 		List<FoodCategoryEntity> categoryEntities = categoryrepository.findAll();
 		List<FoodCategoryBean> categoryBeans = CategoryRequestTransformer.getFoodBeanBeanList(categoryEntities);
-		
-		
-		
-		
-		return  categoryBeans;
-		//return null;
+
+		log.info("Returning all Category...");
+		log.debug("Deleting category...");
+
+		return categoryBeans;
 	}
-
-
 
 	/**
 	 * Checks if is categorypresent.
@@ -104,11 +109,10 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 	 * @return true, if is categorypresent
 	 */
 	public boolean iscategorypresent(Long categoryid) {
-		// TODO Auto-generated method stub
+		log.info("Checking if Category is already there or not...");
+		log.debug("Checking if Category is already there or not...");
 		return categoryrepository.findById(categoryid).isPresent();
 	}
-
-
 
 	/**
 	 * Checks if is category name present.
@@ -119,6 +123,8 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 	@Override
 	public boolean isCategoryNamePresent(String categoryName) {
 		// TODO Auto-generated method stub
+		log.info("Checking if Category name is already there or not...");
+		log.debug("Checking if Category name is already there or not...");
 		return categoryrepository.existsByCategoryName(categoryName);
 	}
 

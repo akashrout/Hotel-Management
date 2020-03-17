@@ -69,26 +69,6 @@ public class FoodCategoryRestController {
 
 		}
 
-// 
-//		if ((foodCategory.getCategoryId() == null) || (foodCategory.getCategory_name() == null)
-//				|| (foodCategory.getCategory_description() == null)) { 
-//
-////			Status status = new Status("Please Provide all details");
-//
-//			return new ResponseEntity<FoodCategoryBean>(new Status("Unable to create. Some fields are missing "),HttpStatus.CONFLICT);	
-//
-//		} else if (categoryService.iscategorypresent(foodCategory.getCategory_id())) {
-//			//Status status = new Status("This Category is already Present");
-//
-//			return new ResponseEntity<>(new Status("Unable to create. A Category with id "+foodCategory.getCategory_id()+" is already present"),HttpStatus.CONFLICT);
-//		} else {
-//			FoodCategoryBean FoodCategoryBean =categoryService.createCategory(foodCategory);
-////			Status status = new Status("SUCCESS");
-//
-//			return new ResponseEntity<>(foodCategory,HttpStatus.CREATED);
-//
-//		}
-
 	}
 
 	/**
