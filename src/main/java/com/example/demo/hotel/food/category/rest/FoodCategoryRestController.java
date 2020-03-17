@@ -34,12 +34,12 @@ public class FoodCategoryRestController {
 	private CategoryValidator categoryValidator;
 
 	@GetMapping("getall")
-	public ResponseEntity<List<FoodCategoryEntity>> listAllProducts() {
-		List<FoodCategoryEntity> foodCategories = categoryService.getAllCategory();
+	public ResponseEntity<List<FoodCategoryBean>> listAllProducts() {
+		List<FoodCategoryBean> foodCategories = categoryService.getAllCategory();
 		if (foodCategories.isEmpty()) {
-			return new ResponseEntity<List<FoodCategoryEntity>>(foodCategories, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<List<FoodCategoryBean>>(foodCategories, HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<List<FoodCategoryEntity>>(foodCategories, HttpStatus.OK);
+		return new ResponseEntity<List<FoodCategoryBean>>(foodCategories, HttpStatus.OK);
 	}
 
 	/**

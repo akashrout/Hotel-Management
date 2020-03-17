@@ -44,7 +44,7 @@ public interface FoodCategoryService {
 	 *
 	 * @return the all category
 	 */
-	public List<FoodCategoryEntity> getAllCategory();
+	public List<FoodCategoryBean> getAllCategory();
 	
 	/**
 	 * Checks if is category name present.

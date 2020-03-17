@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import com.example.demo.hotel.food.category.repo.FoodCategoryRepository;
 import com.example.demo.hotel.food.category.requesttransformer.CategoryRequestTransformer;
 import com.example.demo.hotel.food.category.responsetransformer.CategoryRespnseTransformer;
 import com.example.demo.hotel.food.category.service.FoodCategoryService;
+import com.example.demo.hotel.food.category.validations.CategoryValidator;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -20,6 +23,8 @@ import com.example.demo.hotel.food.category.service.FoodCategoryService;
  */
 @Service
 public class FoodCategoryServiceImpl implements FoodCategoryService {
+	
+	private static final Logger log = LoggerFactory.getLogger(FoodCategoryServiceImpl.class);
 	
 	/** The categoryrepository. */
 	@Autowired
@@ -33,6 +38,8 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 	 */
 	@Override
 	public FoodCategoryBean createCategory(FoodCategoryBean foodCategory) {
+		log.info("Entering Create Category...");
+		log.debug("Entering Create category...");
 		FoodCategoryEntity foodCategoryEntity = CategoryRequestTransformer.getFoodCategoryEntity(foodCategory);
 		categoryrepository.save(foodCategoryEntity);
 		FoodCategoryBean foodCategoryBean = CategoryRespnseTransformer.getFoodCategoryBean(foodCategoryEntity);
@@ -76,19 +83,15 @@ public class FoodCategoryServiceImpl implements FoodCategoryService {
 	 * @return the all category
 	 */
 	@Override
-	public List<FoodCategoryEntity> getAllCategory() {
-		// TODO Auto-generated method stub
-//		List<FoodCategoryBean> list = new ArrayList<FoodCategoryBean>();
-//		FoodCategoryEntity categoryEntity = (FoodCategoryEntity) CategoryRequestTransformer.getAllCategoryEntity();
-		//list.add(new FoodCategory());
-//		ListIterator<FoodCategory> itr = list.listIterator();
-//		while (itr.hasNext()) {
-//			FoodCategory foodCategory = (FoodCategory) itr.next();
-//			System.out.println(foodCategory);
-//			
-//		}
+	public List<FoodCategoryBean> getAllCategory() {
 		
-		return  categoryrepository.findAll();
+		List<FoodCategoryEntity> categoryEntities = categoryrepository.findAll();
+		List<FoodCategoryBean> categoryBeans = CategoryRequestTransformer.getFoodBeanBeanList(categoryEntities);
+		
+		
+		
+		
+		return  categoryBeans;
 		//return null;
 	}
 
