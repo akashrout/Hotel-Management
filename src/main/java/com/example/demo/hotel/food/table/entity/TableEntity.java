@@ -35,8 +35,7 @@ public class TableEntity {
 	 * @param tableDescription the table description
 	 * @param isTableLock      the is table lock
 	 */
-	
-	
+
 	public TableEntity(String tableName, String tableDescription, int isTableLock) {
 
 		this.tableName = tableName;

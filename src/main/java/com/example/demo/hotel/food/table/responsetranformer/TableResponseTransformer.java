@@ -1,5 +1,9 @@
 package com.example.demo.hotel.food.table.responsetranformer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.example.demo.hotel.food.item.responsetransformer.ItemResponseTransformer;
 import com.example.demo.hotel.food.table.bean.TableBean;
 import com.example.demo.hotel.food.table.entity.TableEntity;
 
@@ -8,6 +12,7 @@ import com.example.demo.hotel.food.table.entity.TableEntity;
  * The Class TableResponseTransformer.
  */
 public class TableResponseTransformer {
+	private static final Logger log = LoggerFactory.getLogger(TableResponseTransformer.class);
 
 	/**
 	 * Gets the table bean.
@@ -16,8 +21,13 @@ public class TableResponseTransformer {
 	 * @return the table bean
 	 */
 	public static TableBean getTableBean(TableEntity tableEntity) {
-		
-		return new TableBean(tableEntity.getTableId(), tableEntity.getTableName(), tableEntity.getTableDescription(), tableEntity.getIsTableLock());
+		log.info(" Converting tableEntity to tableBean...");
+		log.debug("Converting tableEntity to tableBean...");
+		log.info("Returning tableBean to Service...");
+		log.debug("Returning tableBean to Service...");
+
+		return new TableBean(tableEntity.getTableId(), tableEntity.getTableName(), tableEntity.getTableDescription(),
+				tableEntity.getIsTableLock());
 	}
 
 }

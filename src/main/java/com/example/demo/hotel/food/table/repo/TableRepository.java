@@ -4,8 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.hotel.food.table.entity.TableEntity;
 
-public interface TableRepository extends JpaRepository<TableEntity, Long>{
-	
+public interface TableRepository extends JpaRepository<TableEntity, Long> {
+
 	/**
 	 * Exists by table name.
 	 *

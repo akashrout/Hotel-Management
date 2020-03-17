@@ -9,14 +9,14 @@ import com.example.demo.hotel.food.table.bean.TableBean;
  * The Interface TableSevice.
  */
 public interface TableSevice {
-	
+
 	/**
 	 * Gets the all tables.
 	 *
 	 * @return the all tables
 	 */
 	public List<TableBean> getAllTables();
-	
+
 	/**
 	 * Creates the table.
 	 *
@@ -24,7 +24,7 @@ public interface TableSevice {
 	 * @return the table bean
 	 */
 	public TableBean createTable(TableBean tableBean);
-	
+
 	/**
 	 * Checks if is table present.
 	 *
@@ -32,7 +32,7 @@ public interface TableSevice {
 	 * @return true, if is table present
 	 */
 	public boolean isTablePresent(String tableName);
-	
+
 	/**
 	 * Checks if is table present.
 	 *
@@ -40,7 +40,7 @@ public interface TableSevice {
 	 * @return true, if is table present
 	 */
 	public boolean isTablePresent(Long tableId);
-	
+
 	/**
 	 * Update table.
 	 *
@@ -48,7 +48,7 @@ public interface TableSevice {
 	 * @return the table bean
 	 */
 	public TableBean updateTable(TableBean tableBean);
-	
+
 	/**
 	 * Deletetable.
 	 *
