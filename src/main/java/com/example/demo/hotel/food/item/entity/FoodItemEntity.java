@@ -9,46 +9,42 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FoodItemEntity.
  */
 @Entity
 @Table(name = "Food_Items")
 public class FoodItemEntity implements Serializable {
-	
+
 	/** The item id. */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long itemId;
-	
+
 	/** The item name. */
 	@Column(name = "item_name")
 	private String itemName;
-	
+
 	/** The item price. */
 	@Column(name = "price")
 	private long itemPrice;
-	
+
 	/** The item ingredients. */
 	@Column(name = "ingredients")
 	private String itemIngredients;
-	
+
 	/**
 	 * Instantiates a new food item entity.
 	 */
 	public FoodItemEntity() {
-		//remove all super in every entity and bean also
-		//ok sir
+
 	}
-	
-	
 
 	/**
 	 * Instantiates a new food item entity.
 	 *
-	 * @param itemName the item name
-	 * @param itemPrice the item price
+	 * @param itemName        the item name
+	 * @param itemPrice       the item price
 	 * @param itemIngredients the item ingredients
 	 */
 	public FoodItemEntity(String itemName, long itemPrice, String itemIngredients) {
@@ -57,18 +53,15 @@ public class FoodItemEntity implements Serializable {
 		this.itemIngredients = itemIngredients;
 	}
 
-
-
 	/**
 	 * Instantiates a new food item entity.
 	 *
-	 * @param itemId the item id
-	 * @param itemName the item name
-	 * @param itemPrice the item price
+	 * @param itemId          the item id
+	 * @param itemName        the item name
+	 * @param itemPrice       the item price
 	 * @param itemIngredients the item ingredients
 	 */
 	public FoodItemEntity(long itemId, String itemName, long itemPrice, String itemIngredients) {
-		super();
 		this.itemId = itemId;
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
@@ -157,7 +150,5 @@ public class FoodItemEntity implements Serializable {
 		return "FoodItemEntity [itemId=" + itemId + ", itemName=" + itemName + ", itemPrice=" + itemPrice
 				+ ", itemIngredients=" + itemIngredients + "]";
 	}
-	
-	
 
 }

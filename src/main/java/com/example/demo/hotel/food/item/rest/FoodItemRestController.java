@@ -95,7 +95,8 @@ public class FoodItemRestController {
 				FoodItemBean itemBean = foodItemService.updateItem(foodItemBean);
 				return new ResponseEntity<FoodItemBean>(itemBean, HttpStatus.ACCEPTED);
 			} else {
-				return new ResponseEntity(new Status("Unable to update,Item is not present..."), HttpStatus.NOT_ACCEPTABLE);
+				return new ResponseEntity(new Status("Unable to update,Item is not present..."),
+						HttpStatus.NOT_ACCEPTABLE);
 
 			}
 

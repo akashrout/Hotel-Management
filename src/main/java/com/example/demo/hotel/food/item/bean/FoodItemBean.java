@@ -2,51 +2,48 @@ package com.example.demo.hotel.food.item.bean;
 
 import java.io.Serializable;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class FoodItemBean.
  */
 public class FoodItemBean {
-	
+
 	/** The item id. */
 	private long itemId;
-	
+
 	/** The item name. */
 	private String itemName;
-	
+
 	/** The item price. */
 	private Long itemPrice;
-	
+
 	/** The item ingredients. */
 	private String itemIngredients;
-	
+
 	/**
 	 * Instantiates a new food item bean.
 	 */
 	public FoodItemBean() {
-		super();
 	}
-	
+
 	/**
 	 * Instantiates a new food item bean.
 	 *
-	 * @param itemName the item name
-	 * @param itemPrice the item price
+	 * @param itemName        the item name
+	 * @param itemPrice       the item price
 	 * @param itemIngredients the item ingredients
 	 */
 	public FoodItemBean(String itemName, Long itemPrice, String itemIngredients) {
-		super();
 		this.itemName = itemName;
 		this.itemPrice = itemPrice;
 		this.itemIngredients = itemIngredients;
 	}
-	
+
 	/**
 	 * Instantiates a new food item bean.
 	 *
-	 * @param itemId the item id
-	 * @param itemName the item name
-	 * @param itemPrice the item price
+	 * @param itemId          the item id
+	 * @param itemName        the item name
+	 * @param itemPrice       the item price
 	 * @param itemIngredients the item ingredients
 	 */
 	public FoodItemBean(Long itemId, String itemName, Long itemPrice, String itemIngredients) {
@@ -56,7 +53,7 @@ public class FoodItemBean {
 		this.itemPrice = itemPrice;
 		this.itemIngredients = itemIngredients;
 	}
-	
+
 	/**
 	 * Gets the item id.
 	 *
@@ -65,7 +62,7 @@ public class FoodItemBean {
 	public Long getItemId() {
 		return itemId;
 	}
-	
+
 	/**
 	 * Sets the item id.
 	 *
@@ -74,7 +71,7 @@ public class FoodItemBean {
 	public void setItemId(Long itemId) {
 		this.itemId = itemId;
 	}
-	
+
 	/**
 	 * Gets the item name.
 	 *
@@ -83,7 +80,7 @@ public class FoodItemBean {
 	public String getItemName() {
 		return itemName;
 	}
-	
+
 	/**
 	 * Sets the item name.
 	 *
@@ -92,7 +89,7 @@ public class FoodItemBean {
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
-	
+
 	/**
 	 * Gets the item price.
 	 *
@@ -101,7 +98,7 @@ public class FoodItemBean {
 	public Long getItemPrice() {
 		return itemPrice;
 	}
-	
+
 	/**
 	 * Sets the item price.
 	 *
@@ -110,7 +107,7 @@ public class FoodItemBean {
 	public void setItemPrice(Long itemPrice) {
 		this.itemPrice = itemPrice;
 	}
-	
+
 	/**
 	 * Gets the item ingredients.
 	 *
@@ -119,7 +116,7 @@ public class FoodItemBean {
 	public String getItemIngredients() {
 		return itemIngredients;
 	}
-	
+
 	/**
 	 * Sets the item ingredients.
 	 *
@@ -128,7 +125,7 @@ public class FoodItemBean {
 	public void setItemIngredients(String itemIngredients) {
 		this.itemIngredients = itemIngredients;
 	}
-	
+
 	/**
 	 * To string.
 	 *
@@ -139,8 +136,5 @@ public class FoodItemBean {
 		return "FoodItemBean [itemId=" + itemId + ", itemName=" + itemName + ", itemPrice=" + itemPrice
 				+ ", itemIngredients=" + itemIngredients + "]";
 	}
-	
-	
-	
 
 }
