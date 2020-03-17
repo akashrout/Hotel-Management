@@ -55,8 +55,8 @@ public class FoodItemServiceImpl implements FoodItemService {
 	 */
 	@Override
 	public FoodItemBean createItem(FoodItemBean foodItemBean) {
-		log.info(" Inside CreateItem...");
-		log.debug(" Inside CreateItem...");
+		log.info("Entering CreateItem...");
+		log.debug("Entering CreateItem...");
 		FoodItemEntity foodItemEntity = ItemrequestTransformer.getFoodItemEntity(foodItemBean);
 		log.info("Inserting new item to the DB...");
 		log.debug("Inserting new item to the DB...");

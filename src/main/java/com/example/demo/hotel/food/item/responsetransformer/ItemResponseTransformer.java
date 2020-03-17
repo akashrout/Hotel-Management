@@ -11,8 +11,8 @@ public class ItemResponseTransformer {
 	private static final Logger log = LoggerFactory.getLogger(ItemResponseTransformer.class);
 
 	public static FoodItemBean getFoodItemBean(FoodItemEntity foodItemEntity) {
-		log.info(" Converting itemEntity to itemBeam...");
-		log.debug("Converting itemEntity to itemBeam...");
+		log.info(" Converting itemEntity to itemBean...");
+		log.debug("Converting itemEntity to itemBean...");
 		log.info("Returning itemBean to Service...");
 		log.debug("Returning itemBean to Service...");
 		return new FoodItemBean(foodItemEntity.getItemId(), foodItemEntity.getItemName(), foodItemEntity.getItemPrice(),

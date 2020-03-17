@@ -14,19 +14,21 @@ public class ItemrequestTransformer {
 	private static final Logger log = LoggerFactory.getLogger(ItemrequestTransformer.class);
 
 	public static FoodItemEntity getFoodItemEntity(FoodItemBean foodItemBean) {
-		log.info(" Converting itemBeam to itemEntity...");
-		log.debug("Converting itemBeam to itemEntity...");
+		log.info(" Converting itemBean to itemEntity...");
+		log.debug("Converting itemBean to itemEntity...");
 		FoodItemEntity foodItemEntity = new FoodItemEntity(foodItemBean.getItemName(), foodItemBean.getItemPrice(),
 				foodItemBean.getItemIngredients());
+		log.info("Returning itemEntity to Service...");
+		log.debug("Returning itemEntity to Service...");
 		return foodItemEntity;
 	}
 
 	public static List<FoodItemBean> getFoodItemBeanList(List<FoodItemEntity> listOfItemEntity) {
-		log.info(" Converting listOfitemEntity to itemBeam...");
-		log.debug("Converting listOfitemEntity to itemBeam...");
+		log.info(" Converting listOfitemEntity to itemBean...");
+		log.debug("Converting listOfitemEntity to itemBean...");
 		List<FoodItemBean> listOfbean = new ArrayList<>();
-		log.info("Adding  itemEntity to itemBeam...");
-		log.debug("Adding itemEntity to itemBeam...");
+		log.info("Adding  itemEntity to itemBean...");
+		log.debug("Adding itemEntity to itemBean...");
 		for (FoodItemEntity foodItemEntity : listOfItemEntity) {
 
 			listOfbean.add(new FoodItemBean(foodItemEntity.getItemId(), foodItemEntity.getItemName(),
